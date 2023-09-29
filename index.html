@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculo de Bonus</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        label {
+            color: #555;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="date"] {
+            font-size: 16px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff5733;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #e63c1e;
+        }
+
+        #resultado {
+            color: #e63c1e;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculo de Bonus</h1>
+
+        <label for="data1">Data de Início:</label>
+        <input type="date" id="data1">
+
+        <button onclick="calcularDiferenca()">Calcular Diferença</button>
+
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularDiferenca() {
+            const data1 = new Date(document.getElementById('data1').value);
+            const data2 = new Date(); // Pega a data atual
+
+            if (isNaN(data1)) {
+                document.getElementById('resultado').textContent = 'Por favor, insira uma data válida.';
+            } else {
+                const diferencaEmMilissegundos = Math.abs(data2 - data1);
+                const diasDiferenca = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+
+                document.getElementById('resultado').textContent = `A diferença entre o início da apólice e a data atual é de ${diasDiferenca} dias.`;
+            }
+        }
+    </script>
+</body>
+</html>
