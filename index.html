@@ -63,7 +63,16 @@
 
         #resultado {
             color: #e63c1e;
-            font-size: 24px;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        #notificação {
+            color: green;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        #regra {
+            font-size: 20px;
             margin-top: 20px;
         }
     </style>
@@ -77,7 +86,9 @@
 
         <button onclick="calcularDiferenca()">Calcular Diferença</button>
 
+        <p id="regra"></p>
         <p id="resultado"></p>
+        <p id="notificação"></p>
     </div>
 
     <script>
@@ -90,10 +101,44 @@
             } else {
                 const diferencaEmMilissegundos = Math.abs(data2 - data1);
                 const diasDiferenca = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
-
-                document.getElementById('resultado').textContent = `A diferença entre o início da apólice e a data atual é de ${diasDiferenca} dias.`;
-            }
+                
+                
+                document.getElementById('resultado').textContent = `A diferença entre o início da apólice e a data atual é de : ${diasDiferenca} dias.`;
+               document.getElementById('notificação').textContent = '* Regra valida, para apolices com vigencia anterior, superior a 335 dias';
+               if(diasDiferenca <=30){
+                   document.getElementById('regra').textContent = 'Conceder 01 (uma) classe de bônus.';
+                   
+                } else if(diasDiferenca <=60) {
+		    document.getElementById('regra').textContent = 'Manter a classe de bônus';
+  		
+		    } else if(diasDiferenca <=90) {
+		    document.getElementById('regra').textContent = 'Reduzir 01 (uma) classe de bônus';
+        } 
+        else if(diasDiferenca <=120) {
+            document.getElementById('regra').textContent = 'Reduzir 02 (uma) classe de bônus';
+        } else if(diasDiferenca <=150) {
+            document.getElementById('regra').textContent = 'Reduzir 03 (uma) classe de bônus';
+        } else if(diasDiferenca <=180) {
+            document.getElementById('regra').textContent = 'Reduzir 04 (uma) classe de bônus';
+        }  else if(diasDiferenca <=210) {
+            document.getElementById('regra').textContent = 'Reduzir 05 (uma) classe de bônus';
+        } else if(diasDiferenca <=240) {
+            document.getElementById('regra').textContent = 'Reduzir 06 (uma) classe de bônus';
+        } else if(diasDiferenca <=270) {
+            document.getElementById('regra').textContent = 'Reduzir 07 (uma) classe de bônus';
+        } else if(diasDiferenca <=300) {
+            document.getElementById('regra').textContent = 'Reduzir 08 (uma) classe de bônus';
+        } else if(diasDiferenca <=330) {
+            document.getElementById('regra').textContent = 'Reduzir 09 (uma) classe de bônus';
+        } else if(diasDiferenca >330) {
+            document.getElementById('regra').textContent = 'Reduzir 10(uma) classe de bônus';
         }
+    
+    }              
+        
+    }
+
     </script>
 </body>
 </html>
+
