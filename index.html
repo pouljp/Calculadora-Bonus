@@ -75,6 +75,9 @@
             font-size: 20px;
             margin-top: 20px;
         }
+        .botaoBonus{
+            margin: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -83,18 +86,50 @@
 
         <label for="data1">Data de Termino de Vigência Anterior:</label>
         <input type="date" id="data1">
+        <div id="supouInf">
+            <!-- <input
+                type="checkbox" id="sup335" name="vigencia" value="sup335" />
+            <label for="sup335"> Vigencia Superio a 335 anos </label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="inf335" name="vigencia" value="inf335" />
+            <label for="inf335"> Vigencia Inferior a 335 anos </label>
+        </div> -->
+
+        <!-- O segundo valor estará selecionado inicialmente -->
+        <div class="botaoBonus">
+        <select id="bonus">
+            <p>Qual é o Bonus Atual : </p>
+        <option value="1">Bonus 1</option>
+        <option value="2">Bonus  2</option>
+        <option value="3">Bonus 3</option>
+        <option value="4">Bonus 4</option>
+        <option value="5">Bonus 5</option>
+        <option value="6">Bonus 6</option>
+        <option value="7">Bonus 7</option>
+        <option value="8">Bonus 8</option>
+        <option value="9">Bonus 9</option>
+        <option value="10">Bonus 10</option>
+        </select>
+        </div>
+
 
         <button onclick="calcularDiferenca()">Calcular Diferença</button>
 
         <p id="regra"></p>
+        <p id="regra2"></p>
         <p id="resultado"></p>
         <p id="notificação"></p>
+        <p id="calculoBonus"></p>
     </div>
-
     <script>
         function calcularDiferenca() {
             const data1 = new Date(document.getElementById('data1').value);
             const data2 = new Date(); // Pega a data atual
+            const opcao = document.getElementById('bonus')
+            const opcoes = parseInt(opcao.options[opcao.selectedIndex].value)
+           
 
             if (isNaN(data1)) {
                 document.getElementById('resultado').textContent = 'Por favor, insira uma data válida.';
@@ -106,33 +141,48 @@
                 document.getElementById('resultado').textContent = `A diferença entre o início da apólice e a data atual é de : ${diasDiferenca} dias.`;
                document.getElementById('notificação').textContent = '* Regra valida, para apolices com vigencia anterior, superior a 335 dias';
                if(diasDiferenca <=30){
-                   document.getElementById('regra').textContent = 'Conceder 01 (uma) classe de bônus.';
+                   document.getElementById('regra').textContent = 'Conceder 01 (uma) classe de bônus.'
+                   document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes +1);
+
                    
                 } else if(diasDiferenca <=60) {
 		    document.getElementById('regra').textContent = 'Manter a classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes);
   		
 		    } else if(diasDiferenca <=90) {
 		    document.getElementById('regra').textContent = 'Reduzir 01 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -1);
         } 
         else if(diasDiferenca <=120) {
             document.getElementById('regra').textContent = 'Reduzir 02 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -2);
         } else if(diasDiferenca <=150) {
             document.getElementById('regra').textContent = 'Reduzir 03 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -3);
         } else if(diasDiferenca <=180) {
             document.getElementById('regra').textContent = 'Reduzir 04 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -4);
         }  else if(diasDiferenca <=210) {
             document.getElementById('regra').textContent = 'Reduzir 05 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -5);
         } else if(diasDiferenca <=240) {
             document.getElementById('regra').textContent = 'Reduzir 06 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -6);
         } else if(diasDiferenca <=270) {
             document.getElementById('regra').textContent = 'Reduzir 07 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -7);
         } else if(diasDiferenca <=300) {
             document.getElementById('regra').textContent = 'Reduzir 08 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -8);
         } else if(diasDiferenca <=330) {
             document.getElementById('regra').textContent = 'Reduzir 09 (uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -9);
         } else if(diasDiferenca >330) {
             document.getElementById('regra').textContent = 'Reduzir 10(uma) classe de bônus';
+            document.getElementById('regra2').textContent = 'Portanto seu bonus é : ' + (opcoes -10);
         }
+
+        return
     
     }              
         
